@@ -1,32 +1,31 @@
 <script lang="ts">
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
-	import welcome from '$lib/images/svelte-welcome.webp';
-
-	import Counter from './Counter.svelte';
+//   const links = [
+//     { href: "/stations", label: "Stations" },
+//     { href: "/scan", label: "Scan QR" },
+//     { href: "/game", label: "Game Status" }
+//   ];
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="index" content="Scottylabs O-Quest Homepage" />
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
-			</picture>
-		</span>
+	<h1>Find the Station</h1>
+	<p>Welcome to the app prototype.</p>
+</section>
 
-		to your new<br />SvelteKit app
-	</h1>
+<section>
+	<h1>QR Code Scanner</h1>
+</section>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+<section>
+	<h1>Scanned Stations</h1>
+</section>
 
-	<Counter />
+<section>
+	<h1>Unscanned Stations</h1>
 </section>
 
 <style>
@@ -40,21 +39,5 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>

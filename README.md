@@ -5,8 +5,8 @@ Stations display pre-generated QR Codes mapped to a rough timespan, flashing a n
 
 
 ## [For now] Station Parts List:
-- RP2040 microcontroller
+- RP2040 microcontroller - https://www.canakit.com/raspberry-pi-rp2040.html?cid=usd&src=raspberrypi ($1)
 - 1.22 Inch E-Ink display @ https://www.good-display.com/product/548.html
 - 5000mAh Li-Polymer Batteries 3.7V @ https://www.alibaba.com/pla/Professional-Rechargeable-Lithium-Batteries-5000mAh-Li-polymer_1601039428492.html?mark=google_shopping&biz=pla&searchText=pouch+lithium+ion+batteries&product_id=1601039428492&pcy=us_en
 - Container of sorts (laser cut MDF, acrylic, etc., TBD)
-- ...
+- 
