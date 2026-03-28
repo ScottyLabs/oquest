@@ -1,29 +1,35 @@
 <script lang="ts">
 	let {
-		open = false,
-		signedIn = false,
-		darkMode = false,
+		open,
+		signedIn,
+		darkMode,
 		onClose,
 		onToggleTheme,
 		onAuthAction
 	} = $props<{
-		open?: boolean;
-		signedIn?: boolean;
-		darkMode?: boolean;
-		onClose?: () => void;
-		onToggleTheme?: () => void;
-		onAuthAction?: () => void;
+		open: boolean;
+		signedIn: boolean;
+		darkMode: boolean;
+		onClose: () => void;
+		onToggleTheme: () => void;
+		onAuthAction: () => void;
 	}>();
 </script>
 
 {#if open}
+	<!-- click outside, close -->
 	<div class="backdrop" onclick={onClose}></div>
 
 	<div class="popover" role="dialog" aria-label="Account menu">
+
 		<div class="section">
 			<p class="status">
 				{signedIn ? 'Signed in' : 'Signed out'}
 			</p>
+			<button class="close-btn" onclick={onClose}>
+				<!-- <img src="../images/close.png" title="close button" alt="close"> -->
+				 X
+			</button>
 		</div>
 
 		<button class="menu-btn" onclick={onAuthAction}>
@@ -31,12 +37,9 @@
 		</button>
 
 		<button class="menu-btn" onclick={onToggleTheme}>
-			{darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+			{darkMode ? 'Light Mode' : 'Dark Mode'}
 		</button>
 
-		<button class="menu-btn secondary" onclick={onClose}>
-			Close
-		</button>
 	</div>
 {/if}
 
@@ -65,6 +68,8 @@
 
 	.section {
 		padding: 0.25rem 0.25rem 0.5rem;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.status {
@@ -82,7 +87,8 @@
 		font-size: var(--text-md);
 	}
 
-	.menu-btn.secondary {
-		text-align: center;
+	.close-btn{
+		background-color: white;
+		border: 0;
 	}
 </style>

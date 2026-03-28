@@ -4,10 +4,14 @@
 	import HomeView from '$lib/components/views/HomeView.svelte';
 	import ScannedView from '$lib/components/views/ScannedView.svelte';
 	import LeaderboardView from '$lib/components/views/LeaderboardView.svelte';
+	import AccountPopover from '$lib/components/AccountPopover.svelte';
 
 	let currentView = $state(1);
 	let touchStartX = $state(0);
 	let homeViewIndex = 1; 
+	let accountOpen = $state(false);
+	let darkMode = $state(false);
+	let signedIn = $state(false);
 	// views are defined from left to right. 
 
 	let views = [
@@ -17,6 +21,13 @@
 		{ id: 'leaderboard', component: LeaderboardView }
 	];
 
+	// account menu control
+	function toggleAccountPopover() { accountOpen = !accountOpen; } 
+	function closeAccountPopover() { accountOpen = false; }
+	function handleToggleTheme() { darkMode = !darkMode; }
+	function handleAuthAction() { signedIn = !signedIn; accountOpen = false; }
+
+	// swiping control
 	// set initial swipe point
 	function onTouchStart(e: TouchEvent) { touchStartX = e.touches[0].clientX;}
 	// reaction needs to change based on number of views
@@ -42,6 +53,7 @@
 </svelte:head>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<!-- goofy ass shit ignore to allow us to mouse interact with the swiping -->
 <div class="page" 
 	role="region"
 	aria-label="swipeable views"
@@ -52,11 +64,26 @@
 	>
 	<header class="topbar">
 		<span class="app-title">O-Quest</span> 
-		<!-- <button class="account-btn">Account</button> -->
-		 <button class="account-btn">
+		 <button 
+		 	class="account-btn"
+			type="button"
+			aria-label="Account Menu"
+			aria-expanded={accountOpen}
+			onclick={toggleAccountPopover}
+
+			>
 			<img src="https://i.pravatar.cc/150" alt="Account" />
 		</button>
 	</header>
+
+	<AccountPopover 
+		open={accountOpen} 
+		signedIn={signedIn}
+		darkMode={darkMode}
+		onClose={closeAccountPopover} 
+		onToggleTheme={handleToggleTheme}
+		onAuthAction={handleAuthAction}
+		/>
 	
 	<div 
 	class="slider" 
